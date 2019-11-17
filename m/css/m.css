@@ -1,0 +1,153 @@
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+em {
+    font-style: none;
+}
+
+html,
+body {
+    width: 100%;
+    min-height: 700px;
+    height: 100%;
+}
+
+img {
+    border: 0px;
+}
+
+.bg {
+    width: 100%;
+    height: 100%;
+    background: url("../img/m-bg.jpg"/*tpa=http://119.42.34.43:8085/m/img/m-bg.jpg*/) no-repeat center;
+    background-size: cover;
+    text-align: center;
+    color: #fff;
+}
+
+.header {
+    width: 90%;
+    height: 160px;
+    background: url("../img/m-header.png"/*tpa=http://119.42.34.43:8085/m/img/m-header.png*/) no-repeat center;
+    background-size: contain;
+    margin: 0 auto;
+}
+
+.wx {
+    font-size: 25px;
+    margin-bottom: 30px
+}
+
+.teach {
+    font-size: 1.4em;
+    color: #f7e879;
+}
+
+.text {
+    margin-top: 5px;
+    font-weight: normal;
+    font-family: MicrosoftYaHei;
+    letter-spacing: 0px;
+    font-stretch: normal;
+}
+
+.code {
+    width: 120px;
+    height: 120px;
+    border: 8px solid #FFF;
+    border-radius: 10px;
+    margin: 30px auto 15px;
+}
+
+.qr-text {
+    position: relative;
+    background: #dc4735;
+    width: 60%;
+    height: 50px;
+    line-height: 50px;
+    margin: 0 auto;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.qr-text a {
+    position: absolute;
+    float: left;
+    width: 100%;
+    height: 100%;
+    text-decoration: none;
+    color: #FFF;
+    top: 0px;
+    left: 0px;
+}
+
+ul li {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+/* qq 样式 */
+.qq-canvas {
+    width: 120px;
+    height: auto;
+    position: absolute;
+    top: 30%;
+    right: 0;
+    font-size: 12px;
+    padding: 5px 0px;
+    box-sizing: border-box;
+    background: rgba(255, 255, 255, 0.5);
+    box-shadow: -1px 2px 1px 0px #000;
+    border-top: 1px solid rgb(105, 205, 202, 0.7);
+    border-radius: 10px;
+}
+
+.qq-canvas .title {
+    color: #000;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+}
+
+.qq-canvas .qq-style {
+    padding: 5px;
+    display: inline-block;
+    width: 100%;
+    height: 40px;
+    line-height: 25px;
+    vertical-align: middle;
+    box-sizing: border-box;
+    border-width: 2px;
+}
+
+.qq-canvas .qq-style:hover {
+    box-sizing: border-box;
+    background: rgb(163, 225, 250);
+    border: 2px solid rgba(41, 251, 251, 0.7);
+    border-radius: 3px;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+
+.qq-title {
+    color: #000;
+    display: inline-block;
+}
+
+.qq-logo {
+    float: left;
+    width: 25px;
+    height: 25px;
+    background: url("../img/qq.jpg"/*tpa=http://119.42.34.43:8085/m/img/qq.jpg*/) center center no-repeat;
+    background-size: cover;
+    vertical-align: top;
+}

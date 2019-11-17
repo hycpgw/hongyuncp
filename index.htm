@@ -5,16 +5,40 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>财神计划团队 - 鸿运彩票</title>
-    <!--
-	<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1275755960'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s23.cnzz.com/z_stat.php%3Fid%3D1275755960' type='text/javascript'%3E%3C/script%3E"));</script>
-    
--->
+    <title>财神计划团队 - 晨兴彩票</title>
+
     <link rel="stylesheet" href="m/css/m.css" tppabs="http://119.42.34.43:8085/m/css/m.css">
+    <script>
+        var isMobile = /(?:Android|iPad|PlayBook|iPhone|SymbianOS|Phone|Mobile)/i.test(navigator.userAgent);
+        if (isMobile) {
+            window.location = 'mobile.html'/*tpa=http://119.42.34.43:8085/mobile.html*/;
+        }
+    </script>
+    <!--  <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1275755960'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s23.cnzz.com/z_stat.php%3Fid%3D1275755960' type='text/javascript'%3E%3C/script%3E"));</script>
+	-->
     <style>
-        .qq-canvas {
-            width: 16ex;
-            top: 35%;
+        .bg {
+            background-size: cover;
+            position: relative;
+        }
+
+        .qr-text {
+            width: 300px;
+            height: 50px;
+            line-height: 50px;
+            background: #F8E879;
+            color: #FF5656;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .qr-text a {
+            color: #FF5656 !important;
+            font-weight: 600;
+        }
+
+        .qq-logo {
+            margin-left: 10px;
         }
     </style>
     <script>
@@ -26,6 +50,7 @@
             s.parentNode.insertBefore(hm, s);
         })();
     </script>
+
 </head>
 
 <body>
@@ -63,39 +88,22 @@
             <ul id='qq-canvas'>
             </ul>
             <script type='text/template' id='qq-template'>
-                <li>
-                    <a href="{url}"  class='qq-style' >
+                <li >
+                    <a href="{url}" class='qq-style' target='_blank'>
                         <div class='qq-logo'></div>
                         <span class='qq-title'>点击加群</span>
                     </a>
                 </li>
             </script>
         </div>
+
     </div>
 </body>
 <script src="js/jquery-1.9.1.min.js" tppabs="http://119.42.34.43:8085/js/jquery-1.9.1.min.js"></script>
-<!-- <script src='./js/clipboard.min.js'></script> -->
+<script src="js/clipboard.min.js" tppabs="http://119.42.34.43:8085/js/clipboard.min.js"></script>
 <script src="js/data.js" tppabs="http://119.42.34.43:8085/js/data.js"></script>
 <script>
     var random_item = data[Math.floor(Math.random() * data.length)];
-    // var clipboard = new ClipboardJS('#copy-btn', {
-    //     text: function () {
-    //         var num = ''
-    //         if (Number(random_item['is_wx'])) {
-    //             num = random_item['wechat'];
-    //         } else {
-    //             num = random_item['qq']
-    //         }
-    //         var wechat_num = num.trim();
-    //         return wechat_num;
-    //     }
-    // });
-
-    // clipboard.on('success', function (e) {
-    //     alert('复制成功');
-    // });
-
-
     var arr = [];
 
     function fill_content(data) {
@@ -107,6 +115,17 @@
         });
         $('#content-canvas').empty();
         $('#content-canvas').append(list.join(''));
+    }
+
+    function qq_content(data) {
+        var html = $("#qq-template").html();
+        var list = [];
+
+        $.each(data, function (index, val) {
+            list.push(formatTemplate(val, html));
+        });
+        $('#qq-canvas').empty();
+        $('#qq-canvas').append(list.join(''));
     }
 
     function formatTemplate(dta, tmpl) {
@@ -121,19 +140,16 @@
             return (format && format[m2]) ? format[m2](dta[m2]) : dta[m2];
         });
     }
+    var qq_grup_arr = [];
 
     function fill_init_data() {
-        var isMobile = /(?:Android|iPad|PlayBook|iPhone|SymbianOS|Phone|Mobile)/i.test(navigator.userAgent);
         arr = [];
         var qq_grup_arr = [];
-        var random_item = data[Math.floor(Math.random() * data.length)];
         arr.push(random_item);
         fill_content(arr);
         if (random_item['qq_arr'] && random_item['qq_arr'].length != 0) {
             $.each(random_item['qq_arr'], function (i, item) {
-                item['url'] = "mqqapi://card/show_pslcard?src_type=internal&version=1&uin=" + item[
-                        'qq_number'] +
-                    "&card_type=group&source=qrcode";
+                item['url'] = "tencent://groupwpa/?subcmd=all&param=" + item['idkey'];
                 qq_grup_arr.push(item);
             });
             qq_content(qq_grup_arr);
@@ -141,38 +157,17 @@
             $('.qq-canvas').hide();
         }
     }
-
-    fill_init_data();
-
-
-    function qq_content(data) {
-        var html = $("#qq-template").html();
-        var list = [];
-
-        $.each(data, function (index, val) {
-            list.push(formatTemplate(val, html));
-        });
-        $('#qq-canvas').empty();
-        $('#qq-canvas').append(list.join(''));
-    }
-    // 复制微信
-    function copywx() {
-        const range = document.createRange();
-        range.selectNode(document.getElementById('wx'));
-        const selection = window.getSelection();
-        if (selection.rangeCount > 0) selection.removeAllRanges();
-        selection.addRange(range);
-        document.execCommand('copy');
-        alert("复制成功！");
-    }
+    fill_init_data()
+    
     $(function () {
+        var text;
         if (Number(random_item['is_wx'])) {
             var html = "<div class='wx'>导师微信: <span id='wx'>" + random_item['wechat'] + "</span></div>"
             $('.wx').html(html);
             $('#copy-btn').text('点此复制微信');
+            text = '微信';
             $('#copy-btn').click(function () {
                 copywx()
-                window.location.href = "weixin://";
             });
         } else {
             var html = "<div class='wx'>导师QQ: <span id='wx'>" + random_item['qq'] + "</span></div>"
@@ -182,8 +177,19 @@
                 copywx();
                 jump_qq(random_item['qq']);
             });
-        }        
+        }
     })
+    // 复制微信
+    function copywx(text) {
+        const range = document.createRange();
+        range.selectNode(document.getElementById('wx'));
+        const selection = window.getSelection();
+        if (selection.rangeCount > 0) selection.removeAllRanges();
+        selection.addRange(range);
+        document.execCommand('copy');
+        alert("复制成功");
+    }
+
     function jump_qq(qq) {
         var isMobile = /(?:Android|iPad|PlayBook|iPhone|SymbianOS|Phone|Mobile)/i.test(navigator.userAgent);
         if (isMobile) {
